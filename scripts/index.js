@@ -28,8 +28,8 @@ function cardCreate(cardData, cardDelete) {
   return cardElement;
 }
 
-initialCards.forEach((cardData) => {
-  const card = cardCreate(cardData, (cardElement) => {
+initialCards.forEach(cardData => {
+  const card = cardCreate(cardData, cardElement => {
     cardElement.remove();
   });
 
