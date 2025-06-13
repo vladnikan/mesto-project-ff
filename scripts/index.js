@@ -32,6 +32,6 @@ initialCards.forEach(cardData => {
   const card = cardCreate(cardData, cardElement => {
     cardElement.remove();
   });
-
+  
   placesList.append(card);
 });
