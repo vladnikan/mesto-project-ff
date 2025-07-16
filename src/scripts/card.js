@@ -1,28 +1,27 @@
-import { cardTemplate } from "./index.js";
-import { openImagePopup} from './modal.js';
 //функция лайка
 
 function likeClick(likeButton) {
   likeButton.classList.toggle('card__like-button_is-active');
 };
 
+
 //функция создания карточек
 
-function cardCreate(cardData, cardDelete, imageClick, likeButtonClick) {
+function createCard(cardData, cardDelete, clickImage, clickLikeButton) {
+  const cardTemplate = document.querySelector("#card-template").content;
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
 
-  cardElement.querySelector(".card__image").alt = cardData.name;
-  cardElement.querySelector(".card__image").src = cardData.link;
+  const cardImage = cardElement.querySelector('.card__image');
+  const cardText = cardElement.querySelector('.card__title');
 
-  cardElement.querySelector(".card__title").textContent = cardData.name;
+  
+  cardImage.alt = cardData.name;
+  cardImage.src = cardData.link;
 
-  //картинки
-  const imageElement = cardElement.querySelector('.card__image');
-  imageElement.src = cardData.link;
-  imageElement.alt = cardData.name;
+  cardText.textContent = cardData.name;
 
-  imageElement.addEventListener('click', function() {
-  openImagePopup(cardData.link, cardData.name);
+  cardImage.addEventListener('click', function() {
+    clickImage(cardData.link, cardData.name);
   });
 
   //лайк
@@ -37,4 +36,4 @@ function cardCreate(cardData, cardDelete, imageClick, likeButtonClick) {
   return cardElement;
 }
 
-export {cardCreate, likeClick};
+export {createCard, likeClick};
