@@ -36,8 +36,8 @@ function createCard(
           cardDelete(cardElement);
         })
         .catch((err) => {
-          console.log('Ошибка удаления:', err);
-        })
+          console.log("Ошибка удаления:", err);
+        });
     });
   }
 
@@ -47,15 +47,17 @@ function createCard(
 
   //лайк
 
-  const likeCounter = cardElement.querySelector('.card__like-counter');
+  const likeCounter = cardElement.querySelector(".card__like-counter");
   likeCounter.textContent = cardData.likes.length;
 
-  if (cardData.likes.some(user => user._id === currentUserId)) {
-    likeButton.classList.add('card__like-button_is-active');
+  if (cardData.likes.some((user) => user._id === currentUserId)) {
+    likeButton.classList.add("card__like-button_is-active");
   }
 
   likeButton.addEventListener("click", () => {
-    const isLiked = likeButton.classList.contains("card__like-button_is-active");
+    const isLiked = likeButton.classList.contains(
+      "card__like-button_is-active"
+    );
 
     const likeOrDislike = isLiked ? dislikeCard : likeCard;
     likeOrDislike(cardData._id)
@@ -64,8 +66,8 @@ function createCard(
         likeCounter.textContent = res.likes.length;
       })
       .catch((err) => {
-        console.log('ОшибкаL', err)
-      })
+        console.log("ОшибкаL", err);
+      });
   });
   return cardElement;
 }
