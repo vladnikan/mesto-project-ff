@@ -8,7 +8,7 @@ import {
   closeEscPopup,
 } from "./modal.js";
 import { createCard, likeClick } from "./card.js";
-import { enableValidation, resetValidationMessage } from "./validation.js";
+import { enableValidation, resetValidationMessage, config } from "./validation.js";
 import {
   getUserInfo,
   getInitialCards,
@@ -81,19 +81,19 @@ allPopups.forEach((popup) => {
 editButton.addEventListener("click", function () {
   nameInput.value = userName.textContent;
   jobInput.value = description.textContent;
-  resetValidationMessage(formEdit);
+  resetValidationMessage(formEdit, config);
   openPopup(editPopup);
 });
 
 addProfileButton.addEventListener("click", function () {
   formImage.reset();
-  resetValidationMessage(formImage);
+  resetValidationMessage(formImage, config);
   openPopup(addProfilePopup);
 });
 
 editAvatarButton.addEventListener("click", function () {
   formAvatar.reset();
-  resetValidationMessage(formAvatar);
+  resetValidationMessage(formAvatar, config);
   openPopup(avatarPopup);
 });
 
@@ -221,4 +221,5 @@ function changeAvatar(evt) {
 
 formAvatar.addEventListener("submit", changeAvatar);
 
-enableValidation();
+enableValidation(config);
+
