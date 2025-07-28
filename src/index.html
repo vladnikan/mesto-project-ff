@@ -44,13 +44,15 @@
         <div class="popup__content">
           <button type="button" class="popup__close"></button>
           <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="popup__form" name="edit-profile">
+          <form class="popup__form" name="edit-profile" novalidate>
             <input
               type="text"
               name="name"
               class="popup__input form__input"
               id="name-input"
               placeholder="Имя"
+              pattern="^[A-Za-zА-Яа-яЁё\s\-]+$"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
               minlength="2"
               maxlength="40"
               required
@@ -63,6 +65,8 @@
               class="popup__input form__input"
               id="description-input"
               placeholder="Занятие"
+              pattern="^[A-Za-zА-Яа-яЁё\s\-]+$"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
               minlength="2"
               maxlength="200"
               required
@@ -79,12 +83,14 @@
         <div class="popup__content">
           <button type="button" class="popup__close"></button>
           <h3 class="popup__title">Новое место</h3>
-          <form class="popup__form" name="new-place">
+          <form class="popup__form" name="new-place" novalidate>
             <input
               type="text"
               name="place-name"
               class="popup__input popup__input_type_card-name"
               placeholder="Название"
+              pattern="^[A-Za-zА-Яа-яЁё\s\-]+$"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
               minlength="2"
               maxlength="30"
               id="title-input"
@@ -121,7 +127,7 @@
         <div class="popup__content">
           <button type="button" class="popup__close"></button>
           <h3 class="popup__title">Обновить аватар</h3>
-          <form class="popup__form" name="new-avatar">
+          <form class="popup__form" name="new-avatar" novalidate>
             <input
               type="url"
               name="link"

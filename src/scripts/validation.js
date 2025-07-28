@@ -1,25 +1,10 @@
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
-
 // Проверка валидности конкретного инпута
 const isValid = (formElement, inputElement, config) => {
-  if (inputElement.type === "text") {
-    const regExp = /^[А-Яа-яЁёA-Za-z\s-]+$/u;
-    if (!regExp.test(inputElement.value)) {
-      inputElement.setCustomValidity(
-        "Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
-      );
-    } else {
-      inputElement.setCustomValidity("");
-    }
-  } else {
-    inputElement.setCustomValidity("");
+  if (inputElement.validity.patternMismatch) {
+    inputElement.setCustomValidity(inputElement.dataset.errorMessage);
+  }
+  else {
+    inputElement.setCustomValidity('');
   }
 
   if (!inputElement.validity.valid) {
@@ -102,4 +87,4 @@ const enableValidation = (config) => {
   });
 };
 
-export { enableValidation, resetValidationMessage, config };
+export { enableValidation, resetValidationMessage};
